@@ -1,0 +1,44 @@
+{
+  "name": "foil",
+  "version": "1.0.0",
+  "description": "Smart contracts for Foil",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "hardhat compile",
+    "copy-dts": "copyfiles -u 1 \"web3-svelte/src/**/*.d.ts\" dist/src",
+    "clean": "rimraf artifacts && rimraf cache && rimraf deployments/localhost && rimraf src/types/*",
+    "deploy": "run-s deploy:development",
+    "deploy:development": "hardhat deploy --network localhost",
+    "deploy:rinkeby": "hardhat deploy --network rinkeby --export export/abi/rinkeby.json",
+    "deploy:kovan": "hardhat deploy --network kovan --export export/abi/kovan.json",
+    "deploy:goerli": "hardhat deploy --network goerli --export export/abi/goerli.json",
+    "deploy:mainnet": "hardhat deploy --network mainnet --export export/abi/mainnet.json",
+    "deploy:matic_testnet": "hardhat deploy --network matic_testnet --export export/abi/matic_testnet.json",
+    "deploy:bsc_testnet": "hardhat deploy --network bsc_testnet --export export/abi/bsc_testnet.json",
+    "export": "hardhat export-artifacts export/artifacts",
+    "info": "npm-scripts-info",
+    "prepack": "run-s clean prepare",
+    "prepare": "run-s build copy-dts export",
+    "start": "hardhat node",
+    "test": "hardhat test"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.4.0"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.1",
+    "@nomiclabs/hardhat-etherscan": "^2.1.0",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@tenderly/hardhat-tenderly": "^1.0.6",
+    "hardhat": "^2.0.4",
+    "hardhat-deploy": "0.7.0-beta.37",
+    "hardhat-deploy-ethers": "0.3.0-beta.7",
+    "hardhat-typechain": "^0.3.3",
+    "npm-run-all": "^4.1.5",
+    "npm-scripts-info": "^0.3.9",
+    "rimraf": "^3.0.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.2"
+  }
+}
