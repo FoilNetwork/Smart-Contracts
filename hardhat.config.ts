@@ -57,7 +57,7 @@ const config: HardhatUserConfig = {
         deployments: "deployments",
     },
     typechain: {
-        outDir: "web3-svelte/src/types",
+        outDir: "types",
         target: "ethers-v5",
     },
     namedAccounts: {

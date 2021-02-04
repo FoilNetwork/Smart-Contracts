@@ -6,8 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "hardhat compile",
-    "copy-dts": "copyfiles -u 1 \"web3-svelte/src/**/*.d.ts\" dist/src",
-    "clean": "rimraf artifacts && rimraf cache && rimraf deployments/localhost && rimraf src/types/*",
+    "clean": "rimraf artifacts && rimraf cache && rimraf deployments/localhost && rimraf types && rimraf export",
     "deploy": "run-s deploy:development",
     "deploy:development": "hardhat deploy --network localhost",
     "deploy:rinkeby": "hardhat deploy --network rinkeby --export export/abi/rinkeby.json",
@@ -19,12 +18,15 @@
     "export": "hardhat export-artifacts export/artifacts",
     "info": "npm-scripts-info",
     "prepack": "run-s clean prepare",
-    "prepare": "run-s build copy-dts export",
+    "prepare": "run-s build export",
     "start": "hardhat node",
     "test": "hardhat test"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^3.4.0"
+    "@openzeppelin/contracts": "^3.4.0",
+    "@typechain/ethers-v5": "^5.0.0",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.1",
@@ -38,7 +40,9 @@
     "npm-run-all": "^4.1.5",
     "npm-scripts-info": "^0.3.9",
     "rimraf": "^3.0.2",
+    "ts-generator": "^0.1.1",
     "ts-node": "^9.1.1",
+    "typechain": "^4.0.1",
     "typescript": "^4.1.2"
   }
 }

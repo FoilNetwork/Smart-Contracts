@@ -134,4 +134,4 @@ jetificableGroups.json
 /cache
 /dist
 /export
-/web3-svelte/src/types
+/types
