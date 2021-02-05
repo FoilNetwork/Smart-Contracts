@@ -2,7 +2,6 @@
   "name": "foil",
   "version": "1.0.0",
   "description": "Smart contracts for Foil",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "build": "hardhat compile",
